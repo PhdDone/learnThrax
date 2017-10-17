@@ -1,0 +1,4 @@
+dingo	딩고
+dog 개
+zebra	얼룩말
+elephant	코끼리

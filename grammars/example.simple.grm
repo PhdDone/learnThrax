@@ -1,0 +1,33 @@
+import 'byte.grm' as bytelib;
+import 'numbers.grm' as numbers;
+
+# transducer that insert a space
+insspace = "" : " ";
+
+# map a sequence of one or more spaces to exactly on space
+reduce_spaces = bytelib.kSpace+ : " ";
+
+# This deletes a sequence of zero or more spaces:
+delspace = bytelib.kSpace* : "";
+
+sigma_star = bytelib.kBytes*;
+
+punct_not_period = bytelib.kPunct - ".";
+
+# Here are some examples of context-dependent-rewrite rules. The basic format
+# for a context-dependent rewrite rule is:
+#
+# CDRewrite[change, left_context, right_context, sigma_star]
+
+# change: "" : " "
+# left_context: ""
+# right_context: punct_not_period
+# sigma_star: sigma_star
+
+separate_punct1 = CDRewrite["" : " ", "", punct_not_period, sigma_star];
+
+separate_punct2 = CDRewrite["" : " ", punct_not_period, "", sigma_star];
+
+# composing separate_punct1 with separate_punct2:
+
+separate_punct = separate_punct1 @ separate_punct2;

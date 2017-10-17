@@ -1,0 +1,2 @@
+foo_syms = SymbolTable['foo.sym'];
+export foo = StringFile['foo.txt', 'byte', foo_syms];

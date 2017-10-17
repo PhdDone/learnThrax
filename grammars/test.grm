@@ -1,0 +1,7 @@
+import 'byte.grm' as bytelib;
+
+sigma_star = bytelib.kBytes*;
+
+test = CDRewrite["s" : "z", "", "d[EOS]", sigma_star];
+
+export TEST = Optimize[test];
